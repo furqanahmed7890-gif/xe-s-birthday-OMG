@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For Xenia 💫🌸</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Subtle background gradient -->
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="bg-dots" aria-hidden="true"></div>
+
+    <main class="page">
+
+        <!-- Screen 1: Intro -->
+        <section class="screen screen-intro" id="screen-intro">
+            <div class="intro-card">
+                <p class="intro-chip">39 • A star & a flower ✨</p>
+
+                <h1 class="intro-title">
+                    Happy Birthday,<br>
+                    <span class="script">Xenia</span>
+                </h1>
+
+                <p class="intro-text">
+                    Just a small corner of the internet,<br>
+                    made only for you, on your day.
+                </p>
+
+                <button class="primary-btn" id="start-btn">
+                    Open your message 💌
+                </button>
+
+                <p class="intro-hint">
+                    Best viewed with sound on and your heart open 🌸
+                </p>
+            </div>
+        </section>
+
+        <!-- Screen 2: Photo + message -->
+        <section class="screen screen-main" id="screen-main">
+            <div class="card">
+                <div class="card-photo">
+                    <div class="photo-circle">
+                        <img src="xenia.jpg" alt="Xenia">
+                    </div>
+                    <p class="photo-caption">
+                        A beautiful soul, lit by God’s light. 💫
+                    </p>
+                </div>
+
+                <div class="card-text">
+                    <h2 class="title-script">Happy 39th Birthday, Xenia! 🎂</h2>
+                    <p class="subtitle">
+                        many many happy returns of the day, my yellow ranger
+                    </p>
+
+                    <p class="typewriter" id="typewriter-text"
+                       data-full-text="Thinking of you on your 39th birthday! Today, I just want to thank God for the beautiful person you are and ask Him to pour out His blessings upon you. May you have the best year ahead. You are the best, Xenia.">
+                    </p>
+
+                    <p class="signature">
+                        your mate,<br>
+                        <span>Furqan Ahmed</span>
+                    </p>
+
+                    <div class="controls">
+                        <button id="music-toggle" class="music-btn">
+                            Play Music 🎵
+                        </button>
+                        <div class="music-dot" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 3: Words about her -->
+        <section class="screen screen-words" id="screen-words">
+            <h2 class="section-title">When I think of you, I think of…</h2>
+
+            <div class="chips">
+                <button class="chip" data-text="Because your heart always finds a way to care, even in silence.">
+                    Kind
+                </button>
+                <button class="chip" data-text="You bring warmth into places that felt cold before.">
+                    Warm
+                </button>
+                <button class="chip" data-text="Your faith, your courage, your story — they all point upward.">
+                    Faithful
+                </button>
+                <button class="chip" data-text="You shine quietly, but everyone can feel it.">
+                    Radiant
+                </button>
+                <button class="chip" data-text="You carry grace in the way you speak, listen, and love.">
+                    Graceful
+                </button>
+                <button class="chip" data-text="Just by being you, you make life feel more possible.">
+                    Inspiring
+                </button>
+            </div>
+
+            <p class="chip-detail" id="chip-detail">
+                Tap any word to read a little thought about you.
+            </p>
+
+            <p class="closing">
+                May this year bring you closer to everything you’ve prayed for — and surprise you with even more. 🌌🌸
+            </p>
+        </section>
+    </main>
+
+    <!-- Audio (must be started by user) -->
+    <audio id="bg-music" loop>
+        <source src="classical.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Tap sparkle container -->
+    <div id="tap-layer" aria-hidden="true"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
