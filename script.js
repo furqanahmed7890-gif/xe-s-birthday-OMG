@@ -3,26 +3,26 @@ const startBtn = document.getElementById("start-btn");
 const screenMain = document.getElementById("screen-main");
 const typewriterEl = document.getElementById("typewriter-text");
 const musicBtn = document.getElementById("music-toggle");
-const musicDot = document.querySelector(".music-dot");
+const musicStatus = document.querySelector(".music-status");
 const bgMusic = document.getElementById("bg-music");
-const chips = document.querySelectorAll(".chip");
-const chipDetail = document.getElementById("chip-detail");
+const wordChips = document.querySelectorAll(".word-chip");
+const wordDetail = document.getElementById("word-detail");
 const tapLayer = document.getElementById("tap-layer");
 
 let isMusicPlaying = false;
 
 /* Smooth scroll to main + start typewriter */
-if (startBtn) {
+if (startBtn && screenMain) {
     startBtn.addEventListener("click", () => {
         screenMain.scrollIntoView({ behavior: "smooth", block: "start" });
-        setTimeout(startTypewriter, 500);
+        setTimeout(startTypewriter, 600);
     });
 }
 
-/* Typewriter effect */
+/* Typewriter */
 function startTypewriter() {
     if (!typewriterEl) return;
-    const fullText = typewriterEl.getAttribute("data-full-text");
+    const fullText = typewriterEl.getAttribute("data-full-text") || "";
     typewriterEl.textContent = "";
     let index = 0;
 
@@ -40,7 +40,7 @@ function startTypewriter() {
 }
 
 /* Music control */
-if (musicBtn) {
+if (musicBtn && musicStatus && bgMusic) {
     musicBtn.addEventListener("click", async () => {
         try {
             if (!isMusicPlaying) {
@@ -48,40 +48,40 @@ if (musicBtn) {
                 isMusicPlaying = true;
                 musicBtn.textContent = "Pause Music ⏸️";
                 musicBtn.classList.remove("paused");
-                musicDot.classList.add("playing");
+                musicStatus.classList.add("playing");
             } else {
                 bgMusic.pause();
                 isMusicPlaying = false;
                 musicBtn.textContent = "Play Music 🎵";
                 musicBtn.classList.add("paused");
-                musicDot.classList.remove("playing");
+                musicStatus.classList.remove("playing");
             }
         } catch (err) {
             console.error("Music play error:", err);
         }
     });
 
-    // initial state
     musicBtn.classList.add("paused");
 }
 
-/* Chips (words about her) */
-chips.forEach(chip => {
+/* Interactive words */
+wordChips.forEach(chip => {
     chip.addEventListener("click", () => {
-        chips.forEach(c => c.classList.remove("active"));
+        wordChips.forEach(c => c.classList.remove("active"));
         chip.classList.add("active");
-        const text = chip.getAttribute("data-text");
-        chipDetail.textContent = text;
+        const text = chip.getAttribute("data-text") || "";
+        wordDetail.textContent = text || "Tap a word above to see what it means to me.";
     });
 });
 
-/* Tap sparkle - safe for mobile */
+/* Tap sparkles (background only) */
 document.addEventListener("click", (e) => {
     const target = e.target;
-    // Ignore taps on buttons / controls / chips
+    // Ignore taps on buttons and main cards so we don't distract
     if (
         target.closest("button") ||
-        target.closest(".card") ||
+        target.closest(".hero-card") ||
+        target.closest(".main-card") ||
         target.closest(".screen-words")
     ) {
         return;
