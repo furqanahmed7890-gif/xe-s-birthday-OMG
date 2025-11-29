@@ -1,131 +1,150 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>For Xenia 💫🌸</title>
+    <title>For Xenia • Lantern Night 🌙</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Soft starry gradient background -->
-    <div class="bg-layer" aria-hidden="true"></div>
+    <!-- Background texture -->
+    <div class="bg-paper" aria-hidden="true"></div>
+    <div class="bg-ink" aria-hidden="true"></div>
 
-    <!-- Floating star-flowers (very light animation) -->
-    <div class="float-layer" aria-hidden="true">
-        <span>✦</span>
-        <span>✿</span>
-        <span>✦</span>
-        <span>❀</span>
-        <span>✦</span>
-        <span>✿</span>
-    </div>
-
-    <!-- Tap sparkles container -->
+    <!-- Tap ripple layer -->
     <div id="tap-layer" aria-hidden="true"></div>
 
     <main class="page">
 
-        <!-- Screen 1: Cover -->
-        <section class="screen screen-hero" id="screen-hero">
-            <div class="hero-card">
-                <p class="hero-chip">For Xenia • 39 ✨</p>
+        <!-- Section 1: Indie-oriental intro -->
+        <section class="section section-intro" id="section-intro">
+            <div class="intro-card">
+                <div class="seal-row">
+                    <span class="seal-stamp">夜</span>
+                    <span class="seal-text">Night of Xenia • 39</span>
+                </div>
 
-                <h1 class="hero-title">
-                    Happy Birthday,<br>
-                    <span class="script">Xenia</span>
+                <h1 class="intro-title">
+                    Under lantern light,<br>
+                    <span class="script">Happy Birthday, Xenia</span>
                 </h1>
 
-                <p class="hero-text">
-                    Under a sky full of stars and a garden full of flowers,<br>
-                    There is still only one you.
+                <p class="intro-text">
+                    A quiet corner of the night, paper lanterns, soft tea, and<br>
+                    a small letter written just for you.
                 </p>
 
-                <button class="primary-btn" id="start-btn">
-                    Enter your little star‑garden 🌙
+                <button class="primary-btn" id="unfold-btn">
+                    Unfold your letter 📜
                 </button>
 
-                <p class="hero-hint">
-                    Best with sound on, and a quiet moment to yourself 💗
+                <p class="intro-hint">
+                    Turn up your volume. This works best slowly, not rushed.
                 </p>
             </div>
         </section>
 
-        <!-- Screen 2: Photo + main message -->
-        <section class="screen screen-main" id="screen-main">
-            <div class="main-card">
-                <div class="photo-wrap">
-                    <div class="photo-ring">
+        <!-- Section 2: Photo + unfolding letter -->
+        <section class="section section-letter" id="section-letter">
+            <div class="letter-layout">
+                <div class="photo-column">
+                    <div class="photo-frame">
+                        <div class="photo-border"></div>
                         <img src="xenia.jpg" alt="Xenia">
-                        <div class="photo-glow"></div>
+                        <div class="photo-label">Xenia • 39</div>
                     </div>
-                    <p class="photo-note">
-                        A star in the night sky, a flower in God’s garden. 💫🌸
-                    </p>
                 </div>
 
-                <div class="text-wrap">
-                    <h2 class="title-script">Happy 39th Birthday, Xenia! 🎂</h2>
-                    <p class="subtitle">
-                        many many happy returns of the day.
-                    </p>
+                <div class="letter-column">
+                    <div class="letter-fold" id="letter-fold">
+                        <div class="letter-top">
+                            <p class="letter-tag">From Furqan, with gratitude.</p>
+                        </div>
+                        <div class="letter-body">
+                            <h2 class="letter-title">A small birthday letter</h2>
+                            <p class="letter-subtitle">
+                                To a star in God’s sky and a flower in His garden.
+                            </p>
 
-                    <p class="typewriter" id="typewriter-text"
-                       data-full-text="Thinking of you on your 39th birthday! Today, I just want to thank God for the beautiful person you are and ask Him to pour out His blessings upon you. May you have the best year ahead. You are the best, Xenia.">
-                    </p>
+                            <p class="typewriter" id="typewriter-text"
+                               data-full-text="Thinking of you on your 39th birthday! Today, I just want to thank God for the beautiful person you are and ask Him to pour out His blessings upon you. May you have the best year ahead. You are the best, Xenia.">
+                            </p>
 
-                    <p class="signature">
-                        your mate,<br>
-                        <span>Furqan Ahmed</span>
-                    </p>
+                            <p class="signature">
+                                With love,<br>
+                                <span>Furqan Ahmed</span>
+                            </p>
 
-                    <div class="controls">
-                        <button id="music-toggle" class="music-btn">
-                            Play Music 🎵
-                        </button>
-                        <div class="music-status" aria-hidden="true">
-                            <span></span><span></span><span></span>
+                            <div class="controls">
+                                <button id="music-toggle" class="music-btn">
+                                    Play music 🎐
+                                </button>
+                                <span class="music-note">
+                                    Listen like wind through temple chimes.
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Screen 3: Interactive words / small blessings -->
-        <section class="screen screen-words" id="screen-words">
-            <h2 class="section-title">When I look at you, I see…</h2>
-            <p class="section-subtitle">
-                Tap on any petal to reveal a little thought about you.
+        <!-- Section 3: Lantern wishes (interaction #2) -->
+        <section class="section section-lanterns" id="section-lanterns">
+            <h2 class="section-heading">Lantern wishes for your year ahead</h2>
+            <p class="section-sub">
+                Tap a lantern to turn it around and reveal a wish.
             </p>
 
-            <div class="word-grid">
-                <button class="word-chip" data-text="You carry a gentleness that heals more than you realize.">
-                    Gentle
+            <div class="lantern-row">
+                <button class="lantern" data-front="安" data-back="Peace in your heart and in every room you enter.">
+                    <div class="lantern-inner">
+                        <span class="lantern-front">安</span>
+                        <span class="lantern-back">Peace</span>
+                    </div>
                 </button>
-                <button class="word-chip" data-text="Your smile lights up hearts the way stars light up the sky.">
-                    Radiant
+                <button class="lantern" data-front="光" data-back="Light for your path, even when the way feels foggy.">
+                    <div class="lantern-inner">
+                        <span class="lantern-front">光</span>
+                        <span class="lantern-back">Light</span>
+                    </div>
                 </button>
-                <button class="word-chip" data-text="You stay, you believe, you love — that’s real strength.">
-                    Strong
-                </button>
-                <button class="word-chip" data-text="Your faith points upward, even when life feels heavy.">
-                    Faithful
-                </button>
-                <button class="word-chip" data-text="You bring warmth and comfort wherever you go.">
-                    Warm
-                </button>
-                <button class="word-chip" data-text="You make people around you want to grow, hope, and believe.">
-                    Inspiring
+                <button class="lantern" data-front="花" data-back="New blossoms in your life, in ways you did not expect.">
+                    <div class="lantern-inner">
+                        <span class="lantern-front">花</span>
+                        <span class="lantern-back">Bloom</span>
+                    </div>
                 </button>
             </div>
 
-            <p class="word-detail" id="word-detail">
-                Tap a word above to see what it means to me.
+            <p class="lantern-detail" id="lantern-detail">
+                Tap any lantern above, and a wish for you will appear here.
+            </p>
+        </section>
+
+        <!-- Section 4: Tea fortune (interaction #3) -->
+        <section class="section section-tea" id="section-tea">
+            <h2 class="section-heading">A cup of birthday tea</h2>
+            <p class="section-sub">
+                Tap the cup to read a small “tea leaf” blessing.
             </p>
 
+            <div class="tea-area">
+                <button class="tea-cup" id="tea-cup">
+                    <div class="tea-wave"></div>
+                    <div class="tea-steam">
+                        <span></span><span></span>
+                    </div>
+                    <span class="tea-icon">茶</span>
+                </button>
+                <p class="tea-message" id="tea-message">
+                    In this cup are quite blessings waiting to be read.
+                </p>
+            </div>
+
             <p class="closing-text">
-                May this year be full of answered prayers, gentle surprises, and nights where you feel God’s love as close as the stars above you. 🌌
+                May this year feel like a gentle night market: warm lights, easy laughter, and the quiet knowing that you are deeply loved. 🌙🌸
             </p>
         </section>
     </main>
