@@ -1,27 +1,40 @@
 // Elements
-const startBtn = document.getElementById("start-btn");
-const screenMain = document.getElementById("screen-main");
+const unfoldBtn = document.getElementById("unfold-btn");
+const letterFold = document.getElementById("letter-fold");
+const sectionLetter = document.getElementById("section-letter");
+
 const typewriterEl = document.getElementById("typewriter-text");
 const musicBtn = document.getElementById("music-toggle");
-const musicStatus = document.querySelector(".music-status");
 const bgMusic = document.getElementById("bg-music");
-const wordChips = document.querySelectorAll(".word-chip");
-const wordDetail = document.getElementById("word-detail");
+
+const lanterns = document.querySelectorAll(".lantern");
+const lanternDetail = document.getElementById("lantern-detail");
+
+const teaCup = document.getElementById("tea-cup");
+const teaMessage = document.getElementById("tea-message");
+
 const tapLayer = document.getElementById("tap-layer");
 
 let isMusicPlaying = false;
 
-/* Smooth scroll to main + start typewriter */
-if (startBtn && screenMain) {
-    startBtn.addEventListener("click", () => {
-        screenMain.scrollIntoView({ behavior: "smooth", block: "start" });
-        setTimeout(startTypewriter, 600);
+/* ========== UNFOLD LETTER (Interaction #1) ========== */
+if (unfoldBtn && letterFold && sectionLetter) {
+    unfoldBtn.addEventListener("click", () => {
+        // Scroll to letter section
+        sectionLetter.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Open the folded letter a moment later
+        setTimeout(() => {
+            letterFold.classList.add("open");
+            startTypewriter();
+        }, 500);
     });
 }
 
-/* Typewriter */
+/* ========== TYPEWRITER ========== */
 function startTypewriter() {
     if (!typewriterEl) return;
+
     const fullText = typewriterEl.getAttribute("data-full-text") || "";
     typewriterEl.textContent = "";
     let index = 0;
@@ -39,22 +52,20 @@ function startTypewriter() {
     typeNext();
 }
 
-/* Music control */
-if (musicBtn && musicStatus && bgMusic) {
+/* ========== MUSIC CONTROL ========== */
+if (musicBtn && bgMusic) {
     musicBtn.addEventListener("click", async () => {
         try {
             if (!isMusicPlaying) {
                 await bgMusic.play();
                 isMusicPlaying = true;
-                musicBtn.textContent = "Pause Music ⏸️";
+                musicBtn.textContent = "Pause music ⏸️";
                 musicBtn.classList.remove("paused");
-                musicStatus.classList.add("playing");
             } else {
                 bgMusic.pause();
                 isMusicPlaying = false;
-                musicBtn.textContent = "Play Music 🎵";
+                musicBtn.textContent = "Play music 🎐";
                 musicBtn.classList.add("paused");
-                musicStatus.classList.remove("playing");
             }
         } catch (err) {
             console.error("Music play error:", err);
@@ -64,25 +75,45 @@ if (musicBtn && musicStatus && bgMusic) {
     musicBtn.classList.add("paused");
 }
 
-/* Interactive words */
-wordChips.forEach(chip => {
-    chip.addEventListener("click", () => {
-        wordChips.forEach(c => c.classList.remove("active"));
-        chip.classList.add("active");
-        const text = chip.getAttribute("data-text") || "";
-        wordDetail.textContent = text || "Tap a word above to see what it means to me.";
+/* ========== LANTERN WISHES (Interaction #2) ========== */
+lanterns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        lanterns.forEach(l => l.classList.remove("flipped"));
+        btn.classList.add("flipped");
+
+        const wish = btn.getAttribute("data-back") || "";
+        lanternDetail.textContent = wish || "Tap any lantern for a wish.";
     });
 });
 
-/* Tap sparkles (background only) */
+/* ========== TEA FORTUNE (Interaction #3) ========== */
+const teaBlessings = [
+    "May your days steep slowly in peace, not rushed, not wasted.",
+    "May God place gentle answers into the questions you carry.",
+    "May new friendships and old ones both feel like home this year.",
+    "May every closed door lead you somewhere softer, kinder, brighter.",
+    "May you feel seen, known, and deeply loved — not just today, but always."
+];
+let teaIndex = 0;
+
+if (teaCup && teaMessage) {
+    teaCup.addEventListener("click", () => {
+        teaIndex = (teaIndex + 1) % teaBlessings.length;
+        teaMessage.textContent = teaBlessings[teaIndex];
+    });
+}
+
+/* ========== TAP RIPPLE (extra interaction) ========== */
 document.addEventListener("click", (e) => {
     const target = e.target;
-    // Ignore taps on buttons and main cards so we don't distract
+
+    // Ignore buttons and main interactive elements so effect stays background-y
     if (
         target.closest("button") ||
-        target.closest(".hero-card") ||
-        target.closest(".main-card") ||
-        target.closest(".screen-words")
+        target.closest(".intro-card") ||
+        target.closest(".letter-layout") ||
+        target.closest(".section-lanterns") ||
+        target.closest(".section-tea")
     ) {
         return;
     }
@@ -91,13 +122,13 @@ document.addEventListener("click", (e) => {
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
 
-    const spark = document.createElement("div");
-    spark.className = "tap-spark";
-    spark.style.left = `${x}px`;
-    spark.style.top = `${y}px`;
-    tapLayer.appendChild(spark);
+    const ripple = document.createElement("div");
+    ripple.className = "tap-ripple";
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+    tapLayer.appendChild(ripple);
 
     setTimeout(() => {
-        spark.remove();
-    }, 600);
+        ripple.remove();
+    }, 700);
 });
